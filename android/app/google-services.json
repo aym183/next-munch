@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "166466547935",
+    "project_id": "nextmunch-69bec",
+    "storage_bucket": "nextmunch-69bec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166466547935:android:a30dd8c78f0255d4c1396a",
+        "android_client_info": {
+          "package_name": "com.example.nextmunch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166466547935-m7iruihdtns1rurooithv5r7np0iodlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGjUR7PADvR_aEGQ2d00BF-CLqvAxK0ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166466547935-m7iruihdtns1rurooithv5r7np0iodlh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "166466547935-opq4m8qicc8m7j2a2v27036hhakaphi2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nextmunch"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
