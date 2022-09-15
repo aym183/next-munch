@@ -32,43 +32,57 @@ class _RegisterViewState extends State<RegisterView> {
   
   @override
   Widget build(BuildContext context) {
-    return Column(
-          children: [
-            TextField(
-              controller: _email,
-              // ignore: prefer_const_constructors
-              keyboardType: TextInputType.emailAddress,
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                hintText: "Enter Email"
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register Page'),
+      ),
+      body: Column(
+            children: [
+              TextField(
+                controller: _email,
+                // ignore: prefer_const_constructors
+                keyboardType: TextInputType.emailAddress,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: const InputDecoration(
+                  hintText: "Enter Email"
+                ),
               ),
+              TextField(
+                controller: _password,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: const InputDecoration(
+                  hintText: "Enter Password"
+                ),
+              ),
+              TextButton(
+                  onPressed: () async {
+                    final email = _email.text;
+                    final password = _password.text;
+                    try{
+                      final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                      print(user_credential);
+                    } on FirebaseAuthException catch(e){
+                      print(e.code);
+                      print('Something Bad Happened');
+                    }
+                  },
+                  child: const Text('Register'),        
+                 
+                ),
+              TextButton(
+              onPressed: (){ 
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/login/',
+                  (route) => false,
+                  );
+            },
+                child: const Text('Have an account? Sign in!')
+                ),
+            ],
             ),
-            TextField(
-              controller: _password,
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                hintText: "Enter Password"
-              ),
-            ),
-            TextButton(
-                onPressed: () async {
-                  final email = _email.text;
-                  final password = _password.text;
-                  try{
-                    final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                    print(user_credential);
-                  } on FirebaseAuthException catch(e){
-                    print(e.code);
-                    print('Something Bad Happened');
-                  }
-                },
-                child: const Text('Register'),        
-               
-              ),
-          ],
-          );
+    );
   }
 }
