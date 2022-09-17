@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/login_view.dart';
+import 'dart:developer' as devtools show log;
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({super.key});
@@ -14,19 +15,23 @@ class VerifyEmailView extends StatefulWidget {
 class _VerifyEmailViewState extends State<VerifyEmailView> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-          const Text('Please verify your email address: '),
+    final user = FirebaseAuth.instance.currentUser;
+    devtools.log(user.toString());
+    return Scaffold(
+      appBar: AppBar(title: const Text('Verify Email')),
+      body: Column(children: [
+          const Text('Verification link has been sent to Email. Please verify your email address: '),
           TextButton(onPressed: () async {
-            final user = FirebaseAuth.instance.currentUser;
-            await user?.sendEmailVerification();
-            Navigator.of(context).pushNamedAndRemoveUntil(
+          Navigator.of(context).pushNamedAndRemoveUntil(
                     loginRoute,
                     (route) => false,
-                    );
-
-          }, child: const Text('Send email verification'))
+          );
+          },
+                    
+          child: const Text('Cancel'),
+          ),
         ],
-        ); 
-
+    ),
+    );
   }
 }

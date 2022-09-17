@@ -7,7 +7,6 @@ import 'package:nextmunch/views/login_view.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/verify_email.dart';
 import 'dart:developer' as devtools show log;
-
 import 'firebase_options.dart';
 
 void main() {
@@ -97,7 +96,7 @@ class _HomeViewState extends State<HomeView> {
                 if(shouldLogout){
                   await FirebaseAuth.instance.signOut();
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/login/', 
+                    loginRoute, 
                     (_) => false,
                     );
                 }
