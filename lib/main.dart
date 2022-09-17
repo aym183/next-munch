@@ -86,84 +86,57 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  int selectedIndex = 0;
+
+  List<Widget> _widgetOptions = <Widget>[
+    Text('Home'),
+    GroupsView(),
+  ];
+
+  void onItemTap(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    var button_select = _widgetOptions.elementAt(selectedIndex);
     return Scaffold(
-      bottomNavigationBar: Container(
-
-        height:140,
-        // color: Colors.white,
-      // padding: const EdgeInsets.symmetric(vertical:5),
-    //     decoration: BoxDecoration(
-    //     border: Border.all(
-    //     color: Colors.black,
-    //     ),
-    //     boxShadow: [                                                               
-    //   BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),       
-    // ],    
-    //     ),
+      // color : Colors.red,
+      // width: MediaQuery.of(context).size.width,
+      // height: MediaQuery.of(context).size.height,
+          //  body: _widgetOptions.elementAt(selectedIndex
+      // body: _widgetOptions.elementAt(selectedIndex),
       
-    // borderRadius: BorderRadius.all(Radius.circular(150)) ),
-        child: Padding(
-          // padding: const EdgeInsets.all(8.0),
-        
-
-           padding: const EdgeInsets.symmetric(horizontal:85.0, vertical:20.0),
-           child: GNav(
-              // tabBorder: Border.all(color: Colors.black, width: 2),
-              color: Colors.black,
-              activeColor: Colors.white,
-              tabActiveBorder: Border.all(color: Colors.black, width: 2),
-              // tabActiveColor: Colors.white,
-              iconSize: 40,
-              tabBackgroundColor: Colors.purple,
-              // padding: EdgeInsets.all(30),
-              // textStyle: (Font),
-              gap: 8,
-              tabs: const[
-                GButton(icon:Icons.home),
-                GButton(icon:Icons.groups),
-              ],
-              onTabChange: (index){
-                if(index == 1){
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    groupsRoute, 
-                    (route) => true,
-                    );
-                };
-              },
-
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(0.0),
+        child: Container(
+          margin: const EdgeInsets.only(top: 50.0),
+          color : Colors.red,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          
+          child: Text(button_select.toString()),
+          
+        ),
       ),
-    ),
-    
-      appBar: AppBar(
-        title: const Text('Home'),
-        actions: [
-          PopupMenuButton<MenuAction>(onSelected: (value) async {
-            switch(value){
-              case MenuAction.logout:
-                final shouldLogout = await ShowLogOutDialog(context);
-                if(shouldLogout){
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    loginRoute, 
-                    (_) => false,
-                    );
-                }
-            }
-            // devtools.log(value.toString());
-          },
-          itemBuilder: (context){
-            return const [
-              PopupMenuItem<MenuAction>(
-                value: MenuAction.logout,
-                child: Text('Log Out'),
-              )
-            ];
-          },)
-        ],
-      )
+      bottomNavigationBar:  BottomNavigationBar(
+              
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                  ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.groups),
+                  label: 'Groups',
+                  ),
+
+              ],
+              currentIndex: selectedIndex,
+              onTap: onItemTap,
+          
+          ),
     );
   }
 }
@@ -195,3 +168,33 @@ Future<bool> ShowLogOutDialog(BuildContext context){
     }
     ).then((value) => value ?? false);
 }
+
+
+
+// appBar: AppBar(
+        //   title: const Text('Home'),
+        //   actions: [
+        //     PopupMenuButton<MenuAction>(onSelected: (value) async {
+        //       switch(value){
+        //         case MenuAction.logout:
+        //           final shouldLogout = await ShowLogOutDialog(context);
+        //           if(shouldLogout){
+        //             await FirebaseAuth.instance.signOut();
+        //             Navigator.of(context).pushNamedAndRemoveUntil(
+        //               loginRoute, 
+        //               (_) => false,
+        //               );
+        //           }
+        //       }
+        //       // devtools.log(value.toString());
+        //     },
+        //     itemBuilder: (context){
+        //       return const [
+        //         PopupMenuItem<MenuAction>(
+        //           value: MenuAction.logout,
+        //           child: Text('Log Out'),
+        //         )
+        //       ];
+        //     },)
+        //   ],
+        // )
