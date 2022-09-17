@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:nextmunch/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nextmunch/views/register_view.dart';
+import 'package:nextmunch/main.dart';
+import 'dart:developer' as devtools show log;
+
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -62,13 +65,28 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () async {
                     final email = _email.text;
                     final password = _password.text;
+                    print('Something');
                     try{
-                      final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-                      print(user_credential);
+                      final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
+                      devtools.log(user_credential.toString());
+                       Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home/',
+                    (route) => false,
+                    );
                     
                   } on FirebaseAuthException catch(e){
-                      print(e.code);
-                      print('Something Bad Happened');
+                      if(e.code == "weak-password"){
+                        devtools.log('Weak Password');
+                      }
+                      else if(e.code == "email-already-in-use"){
+                        devtools.log('Email Already in Use');
+                      }
+                      else if(e.code == "invalid-email"){
+                        devtools.log('Invalid Email');
+                      }
+                      else{
+                        print(e.code);
+                      }
                   }
                   },
                   child: const Text('Login'),        
