@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nextmunch/views/register_view.dart';
@@ -69,8 +70,8 @@ class _LoginViewState extends State<LoginView> {
                     try{
                       final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
                       devtools.log(user_credential.toString());
-                       Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/home/',
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                    homeRoute,
                     (route) => false,
                     );
                     

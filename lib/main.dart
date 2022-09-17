@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/login_view.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/verify_email.dart';
@@ -17,9 +18,10 @@ void main() {
       ),
       home: const HomePage(),
       routes:{
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegisterView(),
-        '/home/': (context) => const HomeView(),
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegisterView(),
+        homeRoute : (context) => const HomeView(),
+        // '/verifyemail/': (context) => const VerifyEmailView(),
       }
     ),
     );
