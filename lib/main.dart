@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:nextmunch/constants/colors.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
@@ -106,15 +107,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     var button_select = _widgetOptions.elementAt(selectedIndex);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: main_color,
       
 
       appBar: AppBar(
         title: const Text('NextMunch',
-         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
           ),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: main_color,
       ),
       // children: Container(
       //         height: 60,
@@ -131,18 +132,18 @@ class _HomeViewState extends State<HomeView> {
       // width: MediaQuery.of(context).size.width,
       // height: MediaQuery.of(context).size.height,
           //  body: _widgetOptions.elementAt(selectedIndex
-      // body: _widgetOptions.elementAt(selectedIndex),
+      
       
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
-          
+          child: _widgetOptions.elementAt(selectedIndex),
           margin: const EdgeInsets.only(top: 50.0),
           // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 3)
+            border: Border.all(color: text_color, width: 3)
           ),
           // child: Text(button_select.toString()),
          
