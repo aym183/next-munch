@@ -21,13 +21,13 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RegisterView(),
+      home: const HomeView(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
         homeRoute : (context) => const HomeView(),
         groupsRoute : (context) => const GroupsView(),
-        // '/verifyemail/': (context) => const VerifyEmailView(),
+        verifyRoute : (context) => const VerifyEmailView(),
       }
     ),
     );
@@ -113,13 +113,15 @@ class _HomeViewState extends State<HomeView> {
       // body: _widgetOptions.elementAt(selectedIndex),
       
       body: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(5.0),
         child: Container(
           margin: const EdgeInsets.only(top: 50.0),
-          color : Colors.red,
+          // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 3)
+          ),
           child: Text(button_select.toString()),
           
         ),
@@ -173,9 +175,9 @@ Future<bool> ShowLogOutDialog(BuildContext context){
     ).then((value) => value ?? false);
 }
 
-void InsertintoDB(String email, String password){
+void InsertintoDB(String name, String email){
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-  users.add({'email': email.toString(), 'password': password.toString()});
+  users.add({'name': name.toString(),'email': email.toString()});
 }
 
 

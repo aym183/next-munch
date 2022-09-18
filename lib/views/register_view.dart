@@ -20,12 +20,14 @@ class _RegisterViewState extends State<RegisterView> {
 
   late final TextEditingController _email;
   late final TextEditingController _password;
+  late final TextEditingController _name;
 
 
   @override
   void initState(){
     _email = TextEditingController();
     _password = TextEditingController();
+    _name = TextEditingController();
     super.initState();
   }
 
@@ -33,6 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
   void dispose(){
     _email.dispose();
     _password.dispose();
+    _name.dispose();
     super.dispose();
   }
 
@@ -46,13 +49,23 @@ class _RegisterViewState extends State<RegisterView> {
       body: Column(
             children: [
               TextField(
+                controller: _name,
+                // ignore: prefer_const_constructors
+                keyboardType: TextInputType.emailAddress,
+                enableSuggestions: false,
+                autocorrect: true,
+                decoration: const InputDecoration(
+                  hintText: "Name"
+                ),
+              ),
+              TextField(
                 controller: _email,
                 // ignore: prefer_const_constructors
                 keyboardType: TextInputType.emailAddress,
                 enableSuggestions: false,
                 autocorrect: false,
                 decoration: const InputDecoration(
-                  hintText: "Enter Email"
+                  hintText: "Email"
                 ),
               ),
               TextField(
@@ -61,37 +74,39 @@ class _RegisterViewState extends State<RegisterView> {
                 enableSuggestions: false,
                 autocorrect: false,
                 decoration: const InputDecoration(
-                  hintText: "Enter Password"
+                  hintText: "Password"
                 ),
               ),
               TextButton(
                   onPressed: () async {
                     final email = _email.text.trim();
                     final password = _password.text.trim();
-                    InsertintoDB(email, password);
-                  //   try{
-                  //     final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                  //     devtools.log(user_credential.toString());
-                  //     final user = FirebaseAuth.instance.currentUser;
-                  //     await user?.sendEmailVerification();
-                  //     Navigator.of(context).pushNamedAndRemoveUntil(
-                  //   verifyRoute,
-                  //   (route) => false,
-                  //   );
+                    final name = _name.text.trim();
+                  
+                    try{
+                      final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                      devtools.log(user_credential.toString());
+                      final user = FirebaseAuth.instance.currentUser;
+                      user?.sendEmailVerification();
+                      InsertintoDB(name, email);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                    verifyRoute,
+                    (route) => false,
+                    );
                     
                     
-                  // } on FirebaseAuthException catch(e){
-                  //     if(e.code == "weak-password"){
-                  //       await showErrorDialog(context, 'Error: ${e.code}');
-                  //     }
-                  //     else if(e.code == "email-already-in-use"){
-                  //       await showErrorDialog(context, 'Error: ${e.code}');
-                  //     }
-                  //     else if(e.code == "invalid-email"){
-                  //       await showErrorDialog(context, 'Error: ${e.code}');
-                  //     }
+                  } on FirebaseAuthException catch(e){
+                      if(e.code == "weak-password"){
+                        await showErrorDialog(context, 'Error: ${e.code}');
+                      }
+                      else if(e.code == "email-already-in-use"){
+                        await showErrorDialog(context, 'Error: ${e.code}');
+                      }
+                      else if(e.code == "invalid-email"){
+                        await showErrorDialog(context, 'Error: ${e.code}');
+                      }
                       
-                  // }
+                  }
                   },
                   child: const Text('Register'),        
                  
