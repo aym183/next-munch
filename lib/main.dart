@@ -119,10 +119,25 @@ class _HomeViewState extends State<HomeView> {
           // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 3)
-          ),
-          child: Text(button_select.toString()),
+          // decoration: BoxDecoration(
+          //   border: Border.all(color: Colors.black, width: 3)
+          // ),
+          // child: Text(button_select.toString()),
+          child: Column(
+            children:[ Container(
+              height: 60,
+              child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              // decoration: BoxDecoration(
+              //   border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 1),
+              // ),
+            )
+            ],
+              // decoration: BoxDecoration(
+              //   border: Border.all(color: Color.fromARGB(255, 244, 0, 0), width: 3),
+              // ),
+        
+              ),
+          
           
         ),
       ),
