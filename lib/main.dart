@@ -106,41 +106,53 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     var button_select = _widgetOptions.elementAt(selectedIndex);
     return Scaffold(
+      backgroundColor: Colors.white,
+      
+
+      appBar: AppBar(
+        title: const Text('NextMunch',
+         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      // children: Container(
+      //         height: 60,
+      //         child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+      //         decoration: BoxDecoration(
+      //           border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 1),
+      //         ),
+      //     ),
+
+    
+      body: SingleChildScrollView(
+        
       // color : Colors.red,
       // width: MediaQuery.of(context).size.width,
       // height: MediaQuery.of(context).size.height,
           //  body: _widgetOptions.elementAt(selectedIndex
       // body: _widgetOptions.elementAt(selectedIndex),
       
-      body: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
+          
           margin: const EdgeInsets.only(top: 50.0),
           // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          // decoration: BoxDecoration(
-          //   border: Border.all(color: Colors.black, width: 3)
-          // ),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 3)
+          ),
           // child: Text(button_select.toString()),
-          child: Column(
-            children:[ Container(
-              height: 60,
-              child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-              // decoration: BoxDecoration(
-              //   border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 1),
-              // ),
-            )
-            ],
-              // decoration: BoxDecoration(
+         
+            // decoration: BoxDecoration(
               //   border: Border.all(color: Color.fromARGB(255, 244, 0, 0), width: 3),
               // ),
         
-              ),
-          
-          
-        ),
+              ),          
       ),
+    ),
       bottomNavigationBar:  BottomNavigationBar(
               
               items: const <BottomNavigationBarItem>[
@@ -158,6 +170,7 @@ class _HomeViewState extends State<HomeView> {
               onTap: onItemTap,
           
           ),
+    
     );
   }
 }
