@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nextmunch/main.dart';
 import 'dart:developer' as devtools show log;
 
 import '../errors/error_handling.dart';
@@ -18,6 +20,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   late final TextEditingController _email;
   late final TextEditingController _password;
+
 
   @override
   void initState(){
@@ -65,29 +68,30 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () async {
                     final email = _email.text.trim();
                     final password = _password.text.trim();
-                    try{
-                      final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                      devtools.log(user_credential.toString());
-                      final user = FirebaseAuth.instance.currentUser;
-                      await user?.sendEmailVerification();
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                    verifyRoute,
-                    (route) => false,
-                    );
+                    InsertintoDB(email, password);
+                  //   try{
+                  //     final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                  //     devtools.log(user_credential.toString());
+                  //     final user = FirebaseAuth.instance.currentUser;
+                  //     await user?.sendEmailVerification();
+                  //     Navigator.of(context).pushNamedAndRemoveUntil(
+                  //   verifyRoute,
+                  //   (route) => false,
+                  //   );
                     
                     
-                  } on FirebaseAuthException catch(e){
-                      if(e.code == "weak-password"){
-                        await showErrorDialog(context, 'Error: ${e.code}');
-                      }
-                      else if(e.code == "email-already-in-use"){
-                        await showErrorDialog(context, 'Error: ${e.code}');
-                      }
-                      else if(e.code == "invalid-email"){
-                        await showErrorDialog(context, 'Error: ${e.code}');
-                      }
+                  // } on FirebaseAuthException catch(e){
+                  //     if(e.code == "weak-password"){
+                  //       await showErrorDialog(context, 'Error: ${e.code}');
+                  //     }
+                  //     else if(e.code == "email-already-in-use"){
+                  //       await showErrorDialog(context, 'Error: ${e.code}');
+                  //     }
+                  //     else if(e.code == "invalid-email"){
+                  //       await showErrorDialog(context, 'Error: ${e.code}');
+                  //     }
                       
-                  }
+                  // }
                   },
                   child: const Text('Register'),        
                  

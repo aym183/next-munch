@@ -1,4 +1,5 @@
 // import 'package:js/js.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +12,16 @@ import 'package:nextmunch/views/verify_email.dart';
 import 'dart:developer' as devtools show log;
 import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const RegisterView(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
@@ -169,6 +173,10 @@ Future<bool> ShowLogOutDialog(BuildContext context){
     ).then((value) => value ?? false);
 }
 
+void InsertintoDB(String email, String password){
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  users.add({'email': email.toString(), 'password': password.toString()});
+}
 
 
 // appBar: AppBar(
