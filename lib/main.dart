@@ -136,15 +136,32 @@ class _HomeViewState extends State<HomeView> {
       
       child: Padding(
         padding: const EdgeInsets.all(5.0),
+
         child: Container(
-          child: _widgetOptions.elementAt(selectedIndex),
-          margin: const EdgeInsets.only(top: 50.0),
+          
+          margin: const EdgeInsets.only(top: 40.0, left:20.0, right: 20.0),
           // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            border: Border.all(color: text_color, width: 3)
-          ),
+          // decoration: BoxDecoration(
+          //   border: Border.all(color: text_color, width: 3)
+          // ),
+
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Icon(Icons.alarm_on_sharp),
+                title: Text("Sales"),
+                subtitle: Text("Sales of the week"),
+                trailing: Text('3500'),
+                onTap: (){},
+                shape: RoundedRectangleBorder(
+                side: BorderSide(color: text_color, width: 3),
+                borderRadius: BorderRadius.circular(30),
+  ), 
+                ),
+            ],
+          )
           // child: Text(button_select.toString()),
          
             // decoration: BoxDecoration(
