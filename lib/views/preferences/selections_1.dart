@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../../constants/routes.dart';
+
 class Cuisine_Selection extends StatefulWidget {
   const Cuisine_Selection({super.key});
 
@@ -16,7 +18,19 @@ class _Cuisine_SelectionState extends State<Cuisine_Selection> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Cuisine Selection')),
-      body: const Text('SELECT CUISINES'),
+      body: Column(children:[const Text('SELECT CUISINES'),
+      TextButton(onPressed: () async {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+                    preferences2,
+                    (route) => false,
+          );
+          },
+                    
+          child: const Text('Next'),
+
+      )
+      ],
+    ),
     );
   }
 }

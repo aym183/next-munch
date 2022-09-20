@@ -4,27 +4,27 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../../constants/routes.dart';
 
-class Personal_Preferences extends StatefulWidget {
-  const Personal_Preferences({super.key});
+class Profle_Details extends StatefulWidget {
+  const Profle_Details({super.key});
 
   @override
-  State<Personal_Preferences> createState() => _Personal_PreferencesState();
+  State<Profle_Details> createState() => _Profle_DetailsState();
 }
 
-class _Personal_PreferencesState extends State<Personal_Preferences> {
+class _Profle_DetailsState extends State<Profle_Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Personal Preferences')),
-      body: Column(children:[const Text('SELECT BUDGET'),
+      appBar: AppBar(title: const Text('Profile Details')),
+      body: Column(children:[const Text('UPLOAD PICTURE'),
       TextButton(onPressed: () async {
           Navigator.of(context).pushNamedAndRemoveUntil(
-                    preferences4,
+                    homeRoute,
                     (route) => false,
           );
           },
                     
-          child: const Text('Next'),
+          child: const Text('DONE'),
 
       )
       ],

@@ -10,9 +10,12 @@ import 'package:nextmunch/constants/colors.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
+import 'package:nextmunch/views/preferences/selections_4.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/verify_email.dart';
 import 'package:nextmunch/views/preferences/selections_1.dart';
+import 'package:nextmunch/views/preferences/selections_2.dart';
+import 'package:nextmunch/views/preferences/selections_3.dart';
 import 'dart:developer' as devtools show log;
 import 'firebase_options.dart';
 
@@ -33,6 +36,9 @@ Future<void> main() async{
         groupsRoute : (context) => const GroupsView(),
         verifyRoute : (context) => const VerifyEmailView(),
         preferences1: (context) => const Cuisine_Selection(),
+        preferences2: (context) => const Restaurant_Selection(),
+        preferences3: (context) => const Personal_Preferences(),
+        preferences4: (context) => const Profle_Details(),
       }
     ),
     );
