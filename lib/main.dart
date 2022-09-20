@@ -22,7 +22,7 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeView(),
+      home: const RegisterView(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
@@ -146,22 +146,24 @@ class _HomeViewState extends State<HomeView> {
           // decoration: BoxDecoration(
           //   border: Border.all(color: text_color, width: 3)
           // ),
+          
 
-          child: ListView(
-            children: [
-              ListTile(
-                leading: Icon(Icons.alarm_on_sharp),
-                title: Text("Sales"),
-                subtitle: Text("Sales of the week"),
-                trailing: Text('3500'),
-                onTap: (){},
-                shape: RoundedRectangleBorder(
-                side: BorderSide(color: text_color, width: 3),
-                borderRadius: BorderRadius.circular(30),
-  ), 
-                ),
-            ],
-          )
+  //         child: ListView(
+  //           children: [
+  //             ListTile(
+  //               leading: Icon(Icons.alarm_on_sharp),
+  //               title: Text("Sales"),
+  //               subtitle: Text("Sales of the week"),
+  //               trailing: Text('3500'),
+  //               onTap: (){},
+  //               shape: RoundedRectangleBorder(
+  //               side: BorderSide(color: text_color, width: 3),
+  //               borderRadius: BorderRadius.circular(30),
+                
+  // ), 
+  //               ),
+  //           ],
+  //         )
           // child: Text(button_select.toString()),
          
             // decoration: BoxDecoration(
@@ -223,7 +225,8 @@ Future<bool> ShowLogOutDialog(BuildContext context){
 
 void InsertintoDB(String name, String email){
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-  users.add({'name': name.toString(),'email': email.toString()});
+  // users.doc(email.toString()).set({'name': name.toString(),'login_index': 0});
+  users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
 
 

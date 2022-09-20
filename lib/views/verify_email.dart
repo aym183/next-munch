@@ -23,12 +23,12 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
           const Text('Verification link has been sent to Email. Please verify your email address: '),
           TextButton(onPressed: () async {
           Navigator.of(context).pushNamedAndRemoveUntil(
-                    loginRoute,
+                    homeRoute,
                     (route) => false,
           );
           },
                     
-          child: const Text('Cancel'),
+          child: const Text('Completed'),
           ),
         ],
     ),

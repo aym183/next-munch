@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nextmunch/constants/routes.dart';
@@ -67,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () async {
                     final email = _email.text.trim();
                     final password = _password.text.trim();
-                    print('Something');
+                   
                     try{
                       final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
                       devtools.log(user_credential.toString());
@@ -108,3 +109,34 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+
+// String first_login(String email){
+
+//   final Stream<QuerySnapshot> users = FirebaseFirestore.instance.collection('users').snapshots();
+//   StreamBuilder<QuerySnapshot>(stream: users, builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot,
+//                       ) {
+//                         if(snapshot.hasError){
+//                           return Text("Something went wrong");
+//                         }
+//                         if(snapshot.connectionState == ConnectionState.waiting){
+//                           return Text('Loading');
+//                         }
+//                         final data = snapshot.requireData;
+//                         return ListView.builder(
+//                           itemCount: data.size,
+//                           itemBuilder: (context, index){
+//                             if(data.docs[index]['email'] == email && data.docs[index]['login_index'] == 0){
+//                                return(Text('True'));
+//                             }
+//                             else{
+//                               return(Text('False'));
+//                             }
+                          
+                        
+//                             // return Text("My name is ${data.docs[index]['name']} and I have logged in ${data.docs[index]['login_index']}");
+  
+// },
+//                         );
+//                       },
+//   );
+// }
