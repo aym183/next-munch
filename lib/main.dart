@@ -1,4 +1,6 @@
 // import 'package:js/js.dart';
+// import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,6 +12,7 @@ import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/verify_email.dart';
+import 'package:nextmunch/views/preferences/selections_1.dart';
 import 'dart:developer' as devtools show log;
 import 'firebase_options.dart';
 
@@ -29,6 +32,7 @@ Future<void> main() async{
         homeRoute : (context) => const HomeView(),
         groupsRoute : (context) => const GroupsView(),
         verifyRoute : (context) => const VerifyEmailView(),
+        preferences1: (context) => const Cuisine_Selection(),
       }
     ),
     );
