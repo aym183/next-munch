@@ -46,5 +46,6 @@
     {"cuisine": "Pub"},
     {"cuisine": "Turkish"},
     {"cuisine": "Brew Pub"},
-    {"cuisine": "Persian"}
+    {"cuisine": "Persian"},
+    {"cuisine": "BUTTON"}
 ]
