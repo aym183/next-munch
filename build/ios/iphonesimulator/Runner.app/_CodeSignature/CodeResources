@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		Fr83UH/eOURm2fTcRHKeA9WUDdU=
+		WcpDI+mlH9gP7M/kueNQ4oKhc1U=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		gwD8GL3005rVKVb5ZojP1sKwfr8=
+		JwV1b9n8CXfraRyD9wrvaHg1oCQ=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		t0Reqc6bqTbTQaVGJx+YehpmK6w=
+		Aj56Bg6k2dFRYmMwM2N2esSGFWc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		oG5/OGn+vw7vp/nu5DUDoZJ4nFc=
+		sOFBINC7G5KnWPBpv6SbH4UIf2Y=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -76,9 +76,13 @@
 		<data>
 		+udtKIRyAcIS6rTHnYkqPRthPjk=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/json_files/cuisines.json</key>
+		<data>
+		nvzTQ3CLcfJiEjfaMcVAcqbhpyg=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		YW3VuNxGEmBAz4UeY6rJM6Yem7M=
+		Lqtg2K6d3iETtpOY+5LUfJdnKOY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -432,7 +436,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yTPOrQ3UzoPJHpYMzekgLZKoYRbqe8E3UB1SalG1yks=
+			PKs1ujwOJxSQcXPdnSW4OWfxBRl9p8dnDqOi7C222Hg=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -481,7 +485,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZaIx/PlhgFEFutVR004BmjdPNrnwWjvJji8TPMPppdg=
+			MX9BOWwYRyNVaMpuMRbaLfbIf5bvwECpMJQujU70s0A=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -495,14 +499,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HYPdmehPXYHWWP1i4/Q+YvJ5ad8RT70cLMw9JoonFLE=
+			cbJvH0SlmmlOVZw4S2gWmYVOEc0/aZ58ftnNjL1yLN0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Sps95+7JukayebvM0TLjL1LW1VXXndpKp/O8tOm9ZR8=
+			nXGXwiCRR53mY8a1teVve+3sEFuvxF0tA7Za6scC5uo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -533,11 +537,18 @@
 			eSIT6ez3qoVubFYyO1nZwI2rBt+8+ysx4WZAsR28p80=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/json_files/cuisines.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kWK9Dz9h1aq2PjuGcHoHw3taO5SGOyAaol+MgtPm4KA=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lwEMTNWkDQDsgsZfbPZWk7wPcma0ZNGZGi5xEbcEJQs=
+			iWZfJhk61StA6aDZgiGRgQ43aJAS4C45zDxtUSShlY8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

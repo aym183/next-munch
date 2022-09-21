@@ -28,7 +28,7 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RegisterView(),
+      home: const Cuisine_Selection(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
@@ -158,22 +158,22 @@ class _HomeViewState extends State<HomeView> {
           // ),
           
 
-  //         child: ListView(
-  //           children: [
-  //             ListTile(
-  //               leading: Icon(Icons.alarm_on_sharp),
-  //               title: Text("Sales"),
-  //               subtitle: Text("Sales of the week"),
-  //               trailing: Text('3500'),
-  //               onTap: (){},
-  //               shape: RoundedRectangleBorder(
-  //               side: BorderSide(color: text_color, width: 3),
-  //               borderRadius: BorderRadius.circular(30),
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Icon(Icons.alarm_on_sharp),
+                title: Text("Sales"),
+                subtitle: Text("Sales of the week"),
+                trailing: Text('3500'),
+                onTap: (){},
+                shape: RoundedRectangleBorder(
+                side: BorderSide(color: text_color, width: 3),
+                borderRadius: BorderRadius.circular(30),
                 
-  // ), 
-  //               ),
-  //           ],
-  //         )
+  ), 
+                ),
+            ],
+          )
           // child: Text(button_select.toString()),
          
             // decoration: BoxDecoration(
