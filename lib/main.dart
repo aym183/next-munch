@@ -238,7 +238,7 @@ void InsertintoDB(String name, String email){
   // users.doc(email.toString()).set({'name': name.toString(),'login_index': 0});
   users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
-
+// MIGHT NEED TO CHANGE AND REPLACE ID WITH EMAIL SO WE CAN LOCATE WHERE TO ADD PREFERENCES.
 
 // appBar: AppBar(
         //   title: const Text('Home'),
