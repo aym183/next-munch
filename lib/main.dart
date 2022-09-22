@@ -1,6 +1,8 @@
 // import 'package:js/js.dart';
 // import 'dart:js';
 
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,7 +30,7 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Cuisine_Selection(),
+      home: const RegisterView(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
@@ -235,8 +237,21 @@ Future<bool> ShowLogOutDialog(BuildContext context){
 
 void InsertintoDB(String name, String email){
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+  users.doc(email.toString()).set({'name': name.toString(),'login_index': 0});
+  // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
+}
+
+void UpdateDB(String email, String cuisines, String restaurants, int ?budget, int ?distance, String dietary){
+  final users = FirebaseFirestore.instance.collection('users').doc(email);
+  users.update({
+      "cuisines": cuisines,
+      'restaurants': restaurants,
+      'budget': budget,
+      'distance': distance,
+      'dietary': dietary,     
+});
   // users.doc(email.toString()).set({'name': name.toString(),'login_index': 0});
-  users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
+  // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
 // MIGHT NEED TO CHANGE AND REPLACE ID WITH EMAIL SO WE CAN LOCATE WHERE TO ADD PREFERENCES.
 
