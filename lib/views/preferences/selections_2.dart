@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as devtools show log;
 import '../../constants/routes.dart';
 var restaurant_list = <String>{};
@@ -35,6 +36,8 @@ class _Restaurant_SelectionState extends State<Restaurant_Selection> {
               onPressed: () async { 
 
                 if(showData[index]['restaurant'].toString() == "BUTTON"){
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString('restaurants', restaurant_list.toString());
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     preferences3,
                     (route) => false,

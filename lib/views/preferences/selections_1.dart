@@ -8,6 +8,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/views/preferences/selections_2.dart';
 import 'package:nextmunch/views/register_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as devtools show log;
 import '../../constants/routes.dart';
 var cuisine_list = <String>{};
@@ -47,6 +48,9 @@ class _Cuisine_SelectionState extends State<Cuisine_Selection> {
               onPressed: () async { 
 
                 if(showData[index]['cuisine'].toString() == "BUTTON"){
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString('cuisines', cuisine_list.toString());
+
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     preferences2,
                     (route) => false,

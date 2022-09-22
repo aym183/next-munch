@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/routes.dart';
 var dietary_list = <String>{};
@@ -49,10 +50,17 @@ class _Personal_PreferencesState extends State<Personal_Preferences> {
           TextButton(onPressed: (){dietary_list.add('Kosher');}, child: Text('Kosher')), 
           TextButton(onPressed: (){dietary_list.add('Pescatarian');}, child: Text('Pescatarian')), 
         ],),
-        TextButton(onPressed: (){
-          print(dietary_list);
-          print(distance_value);
-          print(budget_value);
+        TextButton(onPressed: () async {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setDouble('budget', budget_value);
+          await prefs.setDouble('distance', distance_value);
+          await prefs.setString('dietary', dietary_list.toString());
+
+          print(prefs.getString('cuisines'));
+          print(prefs.getString('restaurants'));
+          print(prefs.getDouble('budget'));
+          print(prefs.getDouble('distance'));
+          print(prefs.getString('dietary'));
         }, child: Text('NEXT')), 
       ],
       )
