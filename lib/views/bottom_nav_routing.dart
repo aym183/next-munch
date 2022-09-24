@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/views/home_view.dart';
 import 'dart:developer' as devtools show log;
 import '../constants/colors.dart';
+import '../constants/routes.dart';
 import 'groups_view.dart';
 
 class bottom_nav_route extends StatefulWidget {
@@ -34,22 +35,28 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
     return Scaffold(
       backgroundColor: main_color,
       appBar: AppBar(
+        backgroundColor: main_color,
         title: const Text('NextMunch',
          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
           ),
         elevation: 2,
-        actions: [IconButton(
-          icon: Icon(Icons.add, color: Colors.black),
+        leading: IconButton(
+          icon: Icon(Icons.add, color: text_color),
           onPressed: () {
             if (selectedIndex == 1){
-              devtools.log('Add group');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    creategroup1,
+                (route) => false,
+                );
             } else{
-              devtools.log('Create Munch');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                    createmunch1,
+                (route) => false,
+                );
             }
           },
           ),
-          ],
-        backgroundColor: main_color,
+          
       ),
       body: _widgetOptions.elementAt(selectedIndex),
       bottomNavigationBar:  BottomNavigationBar(

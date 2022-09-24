@@ -11,8 +11,10 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nextmunch/constants/colors.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/bottom_nav_routing.dart';
+import 'package:nextmunch/views/group_creation/create_group_1.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
+import 'package:nextmunch/views/munch_creation/create_munch_1.dart';
 import 'package:nextmunch/views/preferences/selections_4.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/verify_email.dart';
@@ -43,6 +45,9 @@ Future<void> main() async{
         preferences2: (context) => const Restaurant_Selection(),
         preferences3: (context) => const Personal_Preferences(),
         preferences4: (context) => const Profle_Details(),
+        creategroup1: (context) => const Group_Details(),
+        createmunch1: (context) => const Munch_Details(),
+        main_nav: (context) => const bottom_nav_route(),
       }
     ),
     );
