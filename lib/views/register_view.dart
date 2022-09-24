@@ -8,6 +8,7 @@ import 'package:nextmunch/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as devtools show log;
 
+import '../database/db_create.dart';
 import '../errors/error_handling.dart';
 
 class RegisterView extends StatefulWidget {
@@ -89,7 +90,7 @@ class _RegisterViewState extends State<RegisterView> {
                       devtools.log(user_credential.toString());
                       final user = FirebaseAuth.instance.currentUser;
                       user?.sendEmailVerification();
-                      InsertintoDB(name, email);
+                      Insert_user_intoDB(name, email);
                       final prefs = await SharedPreferences.getInstance();
                       await prefs.setString('email', email);
                       Navigator.of(context).pushNamedAndRemoveUntil(

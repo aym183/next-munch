@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,6 +6,7 @@ import 'package:nextmunch/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/routes.dart';
+import '../../database/db_update.dart';
 var dietary_list = <String>{};
 
 class Personal_Preferences extends StatefulWidget {
@@ -58,7 +58,7 @@ class _Personal_PreferencesState extends State<Personal_Preferences> {
           await prefs.setDouble('budget', budget_value);
           await prefs.setDouble('distance', distance_value);
           await prefs.setString('dietary', dietary_list.toString());
-          UpdateDB(prefs.getString('email').toString(), prefs.getString('cuisines').toString(), prefs.getString('restaurants').toString(), prefs.getDouble('budget')?.toInt(), prefs.getDouble('distance')?.toInt(), prefs.getString('dietary').toString());
+          Preferences_UpdateDB(prefs.getString('email').toString(), prefs.getString('cuisines').toString(), prefs.getString('restaurants').toString(), prefs.getDouble('budget')?.toInt(), prefs.getDouble('distance')?.toInt(), prefs.getString('dietary').toString());
         }, child: Text('NEXT')), 
       ],
       )
