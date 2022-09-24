@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/views/home_view.dart';
-
+import 'dart:developer' as devtools show log;
 import '../constants/colors.dart';
 import 'groups_view.dart';
 
@@ -38,6 +38,17 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
           ),
         elevation: 2,
+        actions: [IconButton(
+          icon: Icon(Icons.add, color: Colors.black),
+          onPressed: () {
+            if (selectedIndex == 1){
+              devtools.log('Add group');
+            } else{
+              devtools.log('Create Munch');
+            }
+          },
+          ),
+          ],
         backgroundColor: main_color,
       ),
       body: _widgetOptions.elementAt(selectedIndex),
