@@ -47,21 +47,56 @@ class _Group_DetailsState extends State<Group_Details> {
             child: Column( 
                 children: [
                   TextField (  
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(  
-                    border: InputBorder.none,  
-                    hintText: 'GROUP NAME'  
-                    ),  
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(  
+                      border: InputBorder.none,  
+                      hintText: 'GROUP NAME'  
+                      ),  
                   ),
+
                   Icon(Icons.person, size: 250, color: text_color,),
-                  TextButton(
+
+                  ElevatedButton(
                     onPressed: (() {
                       
                     }),
-                     
+                    style: ElevatedButton.styleFrom(
+                      // shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),
+                      side: BorderSide(width: 3.0),
+                    ),                     
                     // style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: text_color)
-                    child: const Text("GROUP ICON"),
+                    child: const Text("UPLOAD GROUP ICON"),
                   ),
+
+                  Text('INVITE MEMBERS',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: text_color),
+                  ),
+                  
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                        ElevatedButton(
+                        onPressed: (() {}),
+                        style: ElevatedButton.styleFrom(
+                          side: BorderSide(width: 3.0),
+                        ),                     
+                        child: const Text("Add Munchers"),
+                        ),
+
+                        // Spacer(),
+                        // SizedBox(width: 50,),
+
+                        ElevatedButton(
+                        onPressed: (() {}),
+                        style: ElevatedButton.styleFrom(
+                          side: BorderSide(width: 3.0),
+                        ),                     
+                        child: const Text("Share Invite"),
+                        ),
+                    ],
+                  ),
+
+                  
                 ],
             ),
     ),
