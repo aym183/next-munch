@@ -24,14 +24,6 @@ class _GroupsViewState extends State<GroupsView> {
     return Scaffold(
       backgroundColor: main_color,
       
-
-      appBar: AppBar(
-        title: const Text('NextMunch',
-         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
-          ),
-        elevation: 0,
-        backgroundColor: main_color,
-      ),
       // children: Container(
       //         height: 60,
       //         child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
@@ -65,19 +57,18 @@ class _GroupsViewState extends State<GroupsView> {
 
           child: ListView(
             children: [
-              const Text("HOOEOEOEE"),
-  //             ListTile(
-  //               leading: Icon(Icons.alarm_on_sharp),
-  //               title: Text("Saleskhgv"),
-  //               subtitle: Text("Sales of the week2"),
-  //               trailing: Text('3500'),
-  //               onTap: (){},
-  //               shape: RoundedRectangleBorder(
-  //               side: BorderSide(color: text_color, width: 3),
-  //               borderRadius: BorderRadius.circular(30),
+              ListTile(
+                leading: Icon(Icons.alarm_on_sharp),
+                title: Text("Saleskhgv"),
+                subtitle: Text("Sales of the week2"),
+                trailing: Text('3500'),
+                onTap: (){},
+                shape: RoundedRectangleBorder(
+                side: BorderSide(color: text_color, width: 3),
+                borderRadius: BorderRadius.circular(30),
                 
-  // ), 
-  //               ),
+  ), 
+                ),
             ],
           )
           // child: Text(button_select.toString()),

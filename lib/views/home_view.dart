@@ -17,49 +17,26 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int selectedIndex = 0;
-
-  List<Widget> _widgetOptions = <Widget>[
-    HomeView(),
-    GroupsView(),
-  ];
-
-  void onItemTap(int index){
-    setState(() {
-      selectedIndex = index;
-      devtools.log(selectedIndex.toString());
-    });
-  }
+  
   @override
   Widget build(BuildContext context) {
-    var button_select = _widgetOptions.elementAt(selectedIndex);
     return Scaffold(
       backgroundColor: main_color,
-      
-
-      appBar: AppBar(
-        title: const Text('NextMunch',
-         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
-          ),
-        elevation: 0,
-        backgroundColor: main_color,
-      ),
+    
       // children: Container(
       //         height: 60,
       //         child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
       //         decoration: BoxDecoration(
       //           border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 1),
       //         ),
-      //     ),
-
-    
-      body: SingleChildScrollView(
+      //     ),//   body: SingleChildScrollView(
         
       // color : Colors.red,
       // width: MediaQuery.of(context).size.width,
       // height: MediaQuery.of(context).size.height,
           //  body: _widgetOptions.elementAt(selectedIndex
       
+      body: SingleChildScrollView(
         
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -71,6 +48,9 @@ class _HomeViewState extends State<HomeView> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             
+
+
+    
             // decoration: BoxDecoration(
             //   border: Border.all(color: text_color, width: 3)
             // ),
@@ -101,24 +81,6 @@ class _HomeViewState extends State<HomeView> {
                 ),          
         ),
     ),
-      bottomNavigationBar:  BottomNavigationBar(
-              
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                  ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.groups),
-                  label: 'Groups',
-                  ),
-
-              ],
-              currentIndex: selectedIndex,
-              onTap: onItemTap,
-              backgroundColor: main_color,
-          
-          ),
     
     );
   }

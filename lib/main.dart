@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nextmunch/constants/colors.dart';
 import 'package:nextmunch/constants/routes.dart';
+import 'package:nextmunch/views/bottom_nav_routing.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
 import 'package:nextmunch/views/preferences/selections_4.dart';
@@ -31,7 +32,7 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeView(),
+      home: const bottom_nav_route(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
@@ -65,7 +66,7 @@ class HomePage extends StatelessWidget {
               final user = FirebaseAuth.instance.currentUser;
               if(user != null){
                 if (user.emailVerified){
-                  return HomeView();
+                  return bottom_nav_route();
                 }
                 else{
                   return const VerifyEmailView();
