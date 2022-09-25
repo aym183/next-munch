@@ -22,14 +22,14 @@ class _RegisterViewState extends State<RegisterView> {
 
   late final TextEditingController _email;
   late final TextEditingController _password;
-  late final TextEditingController _name;
+  late final TextEditingController _username;
 
 
   @override
   void initState(){
     _email = TextEditingController();
     _password = TextEditingController();
-    _name = TextEditingController();
+    _username = TextEditingController();
     super.initState();
   }
 
@@ -37,7 +37,7 @@ class _RegisterViewState extends State<RegisterView> {
   void dispose(){
     _email.dispose();
     _password.dispose();
-    _name.dispose();
+    _username.dispose();
     super.dispose();
   }
 
@@ -51,7 +51,7 @@ class _RegisterViewState extends State<RegisterView> {
       body: Column(
             children: [
               TextField(
-                controller: _name,
+                controller: _username,
                 // ignore: prefer_const_constructors
                 keyboardType: TextInputType.emailAddress,
                 enableSuggestions: false,
@@ -83,22 +83,21 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () async {
                     final email = _email.text.trim();
                     final password = _password.text.trim();
-                    final name = _name.text.trim();
+                    final username = _username.text.trim();
                   
                     try{
                       final user_credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
                       devtools.log(user_credential.toString());
                       final user = FirebaseAuth.instance.currentUser;
                       user?.sendEmailVerification();
-                      Insert_user_intoDB(name, email);
+                      Insert_user_intoDB(username, email);
                       final prefs = await SharedPreferences.getInstance();
                       await prefs.setString('email', email);
+                      await prefs.setString('username', username);
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                    verifyRoute,
-                    (route) => false,
-                    );
-                    
-                    
+                        verifyRoute,
+                        (route) => false,
+                      );
                   } on FirebaseAuthException catch(e){
                       if(e.code == "weak-password"){
                         await showErrorDialog(context, 'Error: ${e.code}');

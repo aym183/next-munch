@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:nextmunch/database/db_create.dart';
 import 'package:nextmunch/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/routes.dart';
@@ -14,7 +16,21 @@ class Group_Details extends StatefulWidget {
 }
 
 class _Group_DetailsState extends State<Group_Details> {
-  get main_color => null;
+  late final TextEditingController _group_name;
+
+  @override
+  void initState(){
+    _group_name = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    _group_name.dispose();
+    super.dispose();
+  }
+
+  
 
   @override
    Widget build(BuildContext context) {
@@ -48,8 +64,12 @@ class _Group_DetailsState extends State<Group_Details> {
                 children: [
                   TextField (  
                     textAlign: TextAlign.center,
+                    controller: _group_name,
                     decoration: InputDecoration(  
-                      border: InputBorder.none,  
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 3, color: text_color), //<-- SEE HERE
+                      ),
                       hintText: 'GROUP NAME'  
                       ),  
                   ),
@@ -69,8 +89,15 @@ class _Group_DetailsState extends State<Group_Details> {
                   ),
 
                   ElevatedButton(
-                    onPressed: (() {
-                      
+                    onPressed: (() async {
+                      final group_name = _group_name.text.trim();
+                      final prefs = await SharedPreferences.getInstance();
+                      Insert_group_intoDB(group_name, prefs.getString('username').toString());
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          main_nav,
+                      (route) => false,
+                      );
+
                     }),
                     style: ElevatedButton.styleFrom(
                       // shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),
