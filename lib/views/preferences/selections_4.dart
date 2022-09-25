@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:nextmunch/views/bottom_nav_routing.dart';
 
 import '../../constants/routes.dart';
 
@@ -19,7 +20,7 @@ class _Profle_DetailsState extends State<Profle_Details> {
       body: Column(children:[const Text('UPLOAD PICTURE'),
       TextButton(onPressed: () async {
           Navigator.of(context).pushNamedAndRemoveUntil(
-                    homeRoute,
+                    main_nav,
                     (route) => false,
           );
           },

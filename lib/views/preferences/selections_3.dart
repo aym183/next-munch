@@ -59,6 +59,10 @@ class _Personal_PreferencesState extends State<Personal_Preferences> {
           await prefs.setDouble('distance', distance_value);
           await prefs.setString('dietary', dietary_list.toString());
           Preferences_UpdateDB(prefs.getString('email').toString(), prefs.getString('cuisines').toString(), prefs.getString('restaurants').toString(), prefs.getDouble('budget')?.toInt(), prefs.getDouble('distance')?.toInt(), prefs.getString('dietary').toString());
+          Navigator.of(context).pushNamedAndRemoveUntil(
+                    preferences4,
+                    (route) => false,
+          );
         }, child: Text('NEXT')), 
       ],
       )

@@ -7,7 +7,8 @@ void Preferences_UpdateDB(String email, String cuisines, String restaurants, int
       'restaurants': restaurants,
       'budget': budget,
       'distance': distance,
-      'dietary': dietary,     
+      'dietary': dietary,  
+      "login_index": 1   
 });
   // users.doc(email.toString()).set({'name': name.toString(),'login_index': 0});
   // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});

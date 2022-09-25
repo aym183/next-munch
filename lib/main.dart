@@ -34,7 +34,7 @@ Future<void> main() async{
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const bottom_nav_route(),
+      home: const RegisterView(),
       routes:{
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
