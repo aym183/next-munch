@@ -9,6 +9,8 @@ import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/main.dart';
 import 'dart:developer' as devtools show log;
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -72,6 +74,7 @@ class _LoginViewState extends State<LoginView> {
                     try{
                       final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
                       devtools.log(user_credential.toString());
+                      
                       Navigator.of(context).pushNamedAndRemoveUntil(
                     homeRoute,
                     (route) => false,

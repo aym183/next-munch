@@ -22,6 +22,7 @@ class _GroupsViewState extends State<GroupsView> {
  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: main_color,
       
       // children: Container(

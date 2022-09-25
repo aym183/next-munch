@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/views/home_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as devtools show log;
 import '../constants/colors.dart';
 import '../constants/routes.dart';
+import '../database/db_read.dart';
 import 'groups_view.dart';
 
 class bottom_nav_route extends StatefulWidget {
@@ -42,8 +44,10 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
         elevation: 2,
         leading: IconButton(
           icon: Icon(Icons.add, color: text_color),
-          onPressed: () {
+          onPressed: () async {
             if (selectedIndex == 1){
+                final prefs = await SharedPreferences.getInstance();
+                get_groups(prefs.getString('email').toString());
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     creategroup1,
                 (route) => false,
