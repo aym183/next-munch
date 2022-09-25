@@ -6,8 +6,14 @@ void Insert_user_intoDB(String name, String email){
   // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
 
-void Insert_group_intoDB(String group_name, String username){
+void Insert_group_intoDB(String group_name, String username, String email){
   CollectionReference groups = FirebaseFirestore.instance.collection('groups');
-  groups.add({'group_name': group_name.toString(), "created_by":  username, "creation_time": Timestamp.now(),});
+  groups.add({
+    'group_name': group_name.toString(), 
+    "created_by":  username, 
+    "creation_time": Timestamp.now(),
+    "members": {1: email}
+    
+    });
   // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }

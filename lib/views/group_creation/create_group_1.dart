@@ -93,7 +93,7 @@ class _Group_DetailsState extends State<Group_Details> {
                     onPressed: (() async {
                       final group_name = _group_name.text.trim();
                       final prefs = await SharedPreferences.getInstance();
-                      Insert_group_intoDB(group_name, prefs.getString('username').toString());
+                      Insert_group_intoDB(group_name, prefs.getString('username').toString(), prefs.getString('email').toString());
                       add_group_to_userDB(prefs.getString('email').toString(), group_name);
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           main_nav,
