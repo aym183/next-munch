@@ -50,9 +50,6 @@ class _Munch_DetailsState extends State<Munch_Details> {
                   hintText: 'Event Name'  
                   ),  
                 ),
-
-                
-
                 Text("SELECT GROUP", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: text_color)),
 
               ], 
