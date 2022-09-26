@@ -47,7 +47,14 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
           onPressed: () async {
             if (selectedIndex == 1){
                 final prefs = await SharedPreferences.getInstance();
-                get_groups(prefs.getString('email').toString());
+                devtools.log(prefs.getString('groups').toString());
+                // get_username(prefs.getString('email').toString());
+                // devtools.log(group_names.toString());
+                // final prefs = await SharedPreferences.getInstance();
+                // List? answer = get_groups(prefs.getString('email').toString(), group_names);
+                // devtools.log(prefs.getString('email').toString());
+                // devtools.log(answer.toString());
+
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     creategroup1,
                 (route) => false,
@@ -81,6 +88,7 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
               backgroundColor: main_color,
           
           ),
+      
     );
   }
 }

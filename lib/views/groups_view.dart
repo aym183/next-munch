@@ -9,6 +9,10 @@ import 'package:nextmunch/views/login_view.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'dart:developer' as devtools show log;
+
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../database/db_read.dart';
 // import 'firebase_options.dart';
 
 class GroupsView extends StatefulWidget {
@@ -19,10 +23,14 @@ class GroupsView extends StatefulWidget {
 }
 
 class _GroupsViewState extends State<GroupsView> {
+  
+  final prefs = SharedPreferences.getInstance();
+  
  @override
   Widget build(BuildContext context) {
     return Scaffold(
       
+     
       backgroundColor: main_color,
       
       // children: Container(

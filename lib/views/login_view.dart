@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nextmunch/constants/routes.dart';
+import 'package:nextmunch/database/db_read.dart';
 import 'package:nextmunch/errors/error_handling.dart';
 import 'package:nextmunch/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nextmunch/views/bottom_nav_routing.dart';
 import 'package:nextmunch/views/register_view.dart';
 import 'package:nextmunch/main.dart';
 import 'dart:developer' as devtools show log;
@@ -74,11 +76,16 @@ class _LoginViewState extends State<LoginView> {
                     try{
                       final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
                       devtools.log(user_credential.toString());
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setString('email', email);
+                      get_username(email);
+                      get_groups(email);
+                      // await prefs.setString('username', username);
                       
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                    homeRoute,
-                    (route) => false,
-                    );
+                        main_nav,
+                      (route) => false,
+                      );
                     
                   } on FirebaseAuthException catch(e){
                       if(e.code == "user-not-found"){
