@@ -74,8 +74,9 @@ class _GroupsViewState extends State<GroupsView> {
                 onTap:(){
                   setState((){
                     _id = index;
+                    group_name = global_groups[index];
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                        creategroup1,
+                        groupsClick,
                     (route) => false,
                     ); //if you want to assign the index somewhere to check
                   });                  

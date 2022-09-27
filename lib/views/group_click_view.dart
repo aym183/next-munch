@@ -20,9 +20,7 @@ class _Group_ClickState extends State<Group_Click> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: main_color,
-        title: const Text('Group Name',
-         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),
-          ),
+        title: Text(group_name!, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: text_color),),
           leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: text_color),
           onPressed: () async {
