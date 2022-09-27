@@ -61,29 +61,38 @@ class _GroupsViewState extends State<GroupsView> {
 
           child: new ListView(
                 children: new List.generate(global_groups.length, (int index) {
-               return new ListTile(
-                
-                leading: Icon(Icons.alarm_on_sharp),
-                title: new Text(global_groups[index]),
-                subtitle: Text("Sales of the week2"),
-                trailing: Text('3500'),
-                shape: RoundedRectangleBorder(
-                side: BorderSide(color: text_color, width: 3),
-                borderRadius: BorderRadius.circular(30),
-                ),
-                onTap:(){
-                  setState((){
-                    _id = index;
-                    group_name = global_groups[index];
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        groupsClick,
-                    (route) => false,
-                    ); //if you want to assign the index somewhere to check
-                  });                  
-                },
-                );
-                
-                })
+                  return new ListTile(
+                    
+                    leading: Icon(Icons.alarm_on_sharp),
+                    title: new Text(global_groups[index]),
+                    subtitle: Text("Sales of the week2"),
+                    trailing: Text('3500'),
+                    shape: RoundedRectangleBorder(
+                    side: BorderSide(color: text_color, width: 3),
+                    borderRadius: BorderRadius.circular(30),
+                    ),
+                    onTap:(){
+                      setState((){
+                        _id = index;
+                        group_name = global_groups[index];
+                        get_invite_code(global_groups[index]);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            groupsClick,
+                        (route) => false,
+                        ); //if you want to assign the index somewhere to check
+                      });                  
+                    },
+                    );
+                    
+                    },
+                      ),
+                // prototypeItem: TextButton(
+                //   child: const Text("Join with Invite Code"),
+                //   onPressed: () {
+                //   },
+                //   ),
+
+                  
                 //   for (var i = 0; i < global_groups.length; i++) ListTile(
                 //     leading: Icon(Icons.alarm_on_sharp),
                 //     title: Text(global_groups[i]),

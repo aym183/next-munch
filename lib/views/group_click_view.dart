@@ -5,6 +5,7 @@ import 'package:nextmunch/constants/global_values.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/bottom_nav_routing.dart';
 import "package:share/share.dart";
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/colors.dart';
 
@@ -32,9 +33,11 @@ class _Group_ClickState extends State<Group_Click> {
           },
           )
           ),
-        body: TextButton(child: Text("ADD MEMBERS"),
-          onPressed: () {
-            Share.share("https://twitter.com/UtdPlug");
+        body: TextButton(child: Text("SHARE INVITE ID"),
+          onPressed: () async {
+            final prefs = await SharedPreferences.getInstance();
+            String? group_id = prefs.getString('invite_id');
+            Share.share("Group ID: $group_id");
           },   
           ),
     );

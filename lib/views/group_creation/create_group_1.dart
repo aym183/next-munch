@@ -20,16 +20,19 @@ class Group_Details extends StatefulWidget {
 
 class _Group_DetailsState extends State<Group_Details> {
   late final TextEditingController _group_name;
+  late final TextEditingController _group_code;
 
   @override
   void initState(){
     _group_name = TextEditingController();
+    _group_code = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose(){
     _group_name.dispose();
+    _group_code.dispose();
     super.dispose();
   }
 
@@ -76,6 +79,17 @@ class _Group_DetailsState extends State<Group_Details> {
                       hintText: 'GROUP NAME'  
                       ),  
                   ),
+                  TextField (  
+                    textAlign: TextAlign.center,
+                    controller: _group_code,
+                    decoration: InputDecoration(  
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 3, color: text_color), //<-- SEE HERE
+                      ),
+                      hintText: 'GROUP INVITE CODE'  
+                      ),  
+                  ),
 
                   Icon(Icons.person, size: 250, color: text_color,),
 
@@ -114,6 +128,19 @@ class _Group_DetailsState extends State<Group_Details> {
                     ),                     
                     // style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: text_color)
                     child: const Text("CREATE GROUP"),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (() async {
+                      final group_code = _group_code.text..toString().trim();
+                      invite_code_check(group_code);                      
+                    }),
+                    style: ElevatedButton.styleFrom(
+                      // shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),
+                      side: BorderSide(width: 3.0),
+                    ),                     
+                    // style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: text_color)
+                    child: const Text("ENTER GROUP CODE"),
                   ),
 
                   // Text('INVITE MEMBERS',

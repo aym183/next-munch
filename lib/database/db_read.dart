@@ -18,7 +18,6 @@ Future<void> get_groups(String email) async {
       // .docs.toList().map((item) {
       //   return item.data();
       // }).toList();
-
       
     });
 }
@@ -31,15 +30,51 @@ Future<void> get_username(String email) async {
   .then((querySnapshot) async {
       List listData = querySnapshot.docs.map((doc) => doc.data()['username']).toList();
       devtools.log(listData[1].toString());
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('username', listData[1].toString());      
+    });
+}
+
+
+Future<void> get_invite_code(String group_name) async {
+  FirebaseFirestore.instance
+  .collection('groups')
+  .where('group_name', isEqualTo: group_name) // change as only factoring in one user
+  .get()
+  .then((querySnapshot) async {
+      List<String> listData = querySnapshot.docs.map((doc) => doc.data()['invite_id'] as String).toList();
 
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString('username', listData[1].toString());
-      // final prefs = await SharedPreferences.getInstance();
-      // prefs.setString('groups', listData.toString());
+      devtools.log(listData.toString());
+      prefs.setString('invite_id', listData[0].toString());
       // .docs.toList().map((item) {
       //   return item.data();
       // }).toList();
+      
+    });
+}
 
+Future<void> invite_code_check(String group_code) async {
+  FirebaseFirestore.instance
+  .collection('groups')
+  .where('invite_id', isEqualTo: group_code) // change as only factoring in one user
+  .get()
+  .then((querySnapshot) async {
+      if (querySnapshot.docs.toString() == "[]"){
+         devtools.log("Invalid ID");
+      }
+      else{
+        List<String> listData = querySnapshot.docs.map((doc) => doc.data()['invite_id'] as String).toList();
+
+        final prefs = await SharedPreferences.getInstance();
+        devtools.log(listData.toString());    
+        prefs.setString('invite_id', listData[0].toString());
+
+      }
+      
+      // .docs.toList().map((item) {
+      //   return item.data();
+      // }).toList();
       
     });
 }
