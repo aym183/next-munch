@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/constants/global_values.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/bottom_nav_routing.dart';
+import "package:share/share.dart";
 
 import '../constants/colors.dart';
 
@@ -30,6 +31,11 @@ class _Group_ClickState extends State<Group_Click> {
             );
           },
           )
+          ),
+        body: TextButton(child: Text("ADD MEMBERS"),
+          onPressed: () {
+            Share.share("https://twitter.com/UtdPlug");
+          },   
           ),
     );
   }
