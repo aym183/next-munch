@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ import 'dart:developer' as devtools show log;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants/global_values.dart';
 import '../database/db_read.dart';
 // import 'firebase_options.dart';
 
@@ -23,14 +26,31 @@ class GroupsView extends StatefulWidget {
 }
 
 class _GroupsViewState extends State<GroupsView> {
+
+  List<String> groups = ['Group1', 'Group2', 'Group3'];
   
-  final prefs = SharedPreferences.getInstance();
+  // Future<List?> getGroups() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   List<String>? groups = prefs.getStringList('groups');  
+  //   devtools.log(groups.toString());
+  // }
+
+  // static final prefs = SharedPreferences.getInstance();
+  // List<String>? groups = prefs.getStringList('groups');  
+  
+  // void getGroups2() async {
+  //    final prefs = await SharedPreferences.getInstance();
+  //     List<String>? groups = prefs.getStringList('groups');  
+  //     devtools.log(groups.toString());
+  // }
+  
   
  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       
-     
+      
       backgroundColor: main_color,
       
       // children: Container(
@@ -51,6 +71,8 @@ class _GroupsViewState extends State<GroupsView> {
       
       
       child: Padding(
+        
+        
         padding: const EdgeInsets.all(5.0),
 
         child: Container(
@@ -59,27 +81,48 @@ class _GroupsViewState extends State<GroupsView> {
           // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
+          
           // decoration: BoxDecoration(
           //   border: Border.all(color: text_color, width: 3)
           // ),
+        //   future: getGroups(),
+        // builder: (context, snapshot){
           
+        // }
 
           child: ListView(
-            children: [
-              ListTile(
-                leading: Icon(Icons.alarm_on_sharp),
-                title: Text("Saleskhgv"),
-                subtitle: Text("Sales of the week2"),
-                trailing: Text('3500'),
-                onTap: (){},
-                shape: RoundedRectangleBorder(
-                side: BorderSide(color: text_color, width: 3),
-                borderRadius: BorderRadius.circular(30),
                 
-  ), 
+                children: [
+                  for (var i = 0; i < global_groups.length; i++) ListTile(
+                    leading: Icon(Icons.alarm_on_sharp),
+                    title: Text(global_groups[i]),
+                    subtitle: Text("Sales of the week2"),
+                    trailing: Text('3500'),
+                    onTap: (){},
+                    shape: RoundedRectangleBorder(
+                    side: BorderSide(color: text_color, width: 3),
+                    borderRadius: BorderRadius.circular(30),
                 ),
-            ],
-          )
+                  )
+                                  
+                ],
+                // for(var i = 0; i<groups.length; i++){
+                //   children.add(
+                //     ListTile(
+                //     leading: Icon(Icons.alarm_on_sharp),
+                //     title: Text("Saleskhgv"),
+                //     subtitle: Text("Sales of the week2"),
+                //     trailing: Text('3500'),
+                //     onTap: (){},
+                //     shape: RoundedRectangleBorder(
+                //     side: BorderSide(color: text_color, width: 3),
+                //     borderRadius: BorderRadius.circular(30),
+                // ), 
+                //     ),
+                //   );
+          
+                //   }
+              ),
           // child: Text(button_select.toString()),
          
             // decoration: BoxDecoration(

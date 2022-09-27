@@ -13,6 +13,8 @@ import 'dart:developer' as devtools show log;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants/global_values.dart';
+
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -80,6 +82,8 @@ class _LoginViewState extends State<LoginView> {
                       await prefs.setString('email', email);
                       get_username(email);
                       get_groups(email);
+                      // final prefs =  SharedPreferences.getInstance();
+                      global_groups = prefs.getStringList('groups')!;
                       // await prefs.setString('username', username);
                       
                       Navigator.of(context).pushNamedAndRemoveUntil(

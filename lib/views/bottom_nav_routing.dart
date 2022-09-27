@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:nextmunch/constants/global_values.dart';
 import 'package:nextmunch/views/home_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as devtools show log;
@@ -12,7 +13,6 @@ import 'groups_view.dart';
 class bottom_nav_route extends StatefulWidget {
   const bottom_nav_route({super.key});
   
-
   @override
   State<bottom_nav_route> createState() => _bottom_nav_routeState();
 }
@@ -46,8 +46,7 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
           icon: Icon(Icons.add, color: text_color),
           onPressed: () async {
             if (selectedIndex == 1){
-                final prefs = await SharedPreferences.getInstance();
-                devtools.log(prefs.getString('groups').toString());
+                
                 // get_username(prefs.getString('email').toString());
                 // devtools.log(group_names.toString());
                 // final prefs = await SharedPreferences.getInstance();

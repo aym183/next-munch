@@ -8,13 +8,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> get_groups(String email) async {
   FirebaseFirestore.instance
   .collection('groups')
-  .where('members', isEqualTo: [email])
+  .where('members', isEqualTo: [email]) // change as only factoring in one user
   .get()
   .then((querySnapshot) async {
-      List listData = querySnapshot.docs.map((doc) => doc.data()['group_name']).toList();
+      List<String> listData = querySnapshot.docs.map((doc) => doc.data()['group_name'] as String).toList();
 
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString('groups', listData.toString());
+      prefs.setStringList('groups', listData);
       // .docs.toList().map((item) {
       //   return item.data();
       // }).toList();
@@ -23,7 +23,7 @@ Future<void> get_groups(String email) async {
     });
 }
 
-void get_username(String email) async {
+Future<void> get_username(String email) async {
   FirebaseFirestore.instance
   .collection('users')
   .where('email', isEqualTo: email)
