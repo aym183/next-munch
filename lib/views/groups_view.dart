@@ -27,22 +27,20 @@ class GroupsView extends StatefulWidget {
 
 class _GroupsViewState extends State<GroupsView> {
 
-  // List<String> groups = ['Group1', 'Group2', 'Group3'];
-  
-  // Future<List?> getGroups() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   List<String>? groups = prefs.getStringList('groups');  
-  //   devtools.log(groups.toString());
-  // }
+  int selectedIndex = 0;
+  int _id = 0;
 
-  // static final prefs = SharedPreferences.getInstance();
-  // List<String>? groups = prefs.getStringList('groups');  
-  
-  // void getGroups2() async {
-  //    final prefs = await SharedPreferences.getInstance();
-  //     List<String>? groups = prefs.getStringList('groups');  
-  //     devtools.log(groups.toString());
-  // }
+  // List<Widget> _widgetOptions = <Widget>[
+  //   HomeView(),
+  //   GroupsView(),
+  // ];
+
+  void onItemTap(int index){
+    setState(() {
+      selectedIndex = index;
+      // devtools.log(selectedIndex.toString());
+    });
+  }
   
   
  @override
@@ -50,85 +48,54 @@ class _GroupsViewState extends State<GroupsView> {
     
     return Scaffold(
       
-      
-      backgroundColor: main_color,
-      
-      // children: Container(
-      //         height: 60,
-      //         child: Text('NextMunch', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-      //         decoration: BoxDecoration(
-      //           border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 1),
-      //         ),
-      //     ),
-
-    
-      body: SingleChildScrollView(
-        
-      // color : Colors.red,
-      // width: MediaQuery.of(context).size.width,
-      // height: MediaQuery.of(context).size.height,
-          //  body: _widgetOptions.elementAt(selectedIndex
-      
-      
+      backgroundColor: main_color,    
+      body: SingleChildScrollView(      
       child: Padding(
-        
-        
+ 
         padding: const EdgeInsets.all(5.0),
-
         child: Container(
           
           margin: const EdgeInsets.only(top: 40.0, left:20.0, right: 20.0),
-          // color : Colors.red,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          
-          // decoration: BoxDecoration(
-          //   border: Border.all(color: text_color, width: 3)
-          // ),
-        //   future: getGroups(),
-        // builder: (context, snapshot){
-          
-        // }
 
-          child: ListView(
+          child: new ListView(
+                children: new List.generate(global_groups.length, (int index) {
+               return new ListTile(
                 
-                children: [
-                  for (var i = 0; i < global_groups.length; i++) ListTile(
-                    leading: Icon(Icons.alarm_on_sharp),
-                    title: Text(global_groups[i]),
-                    subtitle: Text("Sales of the week2"),
-                    trailing: Text('3500'),
-                    onTap: (){},
-                    shape: RoundedRectangleBorder(
-                    side: BorderSide(color: text_color, width: 3),
-                    borderRadius: BorderRadius.circular(30),
+                leading: Icon(Icons.alarm_on_sharp),
+                title: new Text(global_groups[index]),
+                subtitle: Text("Sales of the week2"),
+                trailing: Text('3500'),
+                shape: RoundedRectangleBorder(
+                side: BorderSide(color: text_color, width: 3),
+                borderRadius: BorderRadius.circular(30),
                 ),
-                  )
-                                  
-                ],
-                // for(var i = 0; i<groups.length; i++){
-                //   children.add(
-                //     ListTile(
+                onTap:(){
+                  setState((){
+                    _id = index;
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        creategroup1,
+                    (route) => false,
+                    ); //if you want to assign the index somewhere to check
+                  });                  
+                },
+                );
+                
+                })
+                //   for (var i = 0; i < global_groups.length; i++) ListTile(
                 //     leading: Icon(Icons.alarm_on_sharp),
-                //     title: Text("Saleskhgv"),
+                //     title: Text(global_groups[i]),
                 //     subtitle: Text("Sales of the week2"),
                 //     trailing: Text('3500'),
                 //     onTap: (){},
                 //     shape: RoundedRectangleBorder(
                 //     side: BorderSide(color: text_color, width: 3),
                 //     borderRadius: BorderRadius.circular(30),
-                // ), 
-                //     ),
-                //   );
-          
-                //   }
+                // ),
+                //   )                               
+                
               ),
-          // child: Text(button_select.toString()),
-         
-            // decoration: BoxDecoration(
-              //   border: Border.all(color: Color.fromARGB(255, 244, 0, 0), width: 3),
-              // ),
-        
               ),          
       ),
     ),    
