@@ -4,9 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:nextmunch/database/db_create.dart';
 import 'package:nextmunch/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'dart:developer' as devtools show log;
 import '../../constants/colors.dart';
+import '../../constants/global_values.dart';
 import '../../constants/routes.dart';
+import '../../database/db_read.dart';
 import '../../database/db_update.dart';
 
 class Group_Details extends StatefulWidget {
@@ -94,12 +96,17 @@ class _Group_DetailsState extends State<Group_Details> {
                       final group_name = _group_name.text.trim();
                       final prefs = await SharedPreferences.getInstance();
                       Insert_group_intoDB(group_name, prefs.getString('username').toString(), prefs.getString('email').toString());
+                      get_groups(prefs.getString('email').toString());
                       add_group_to_userDB(prefs.getString('email').toString(), group_name.toString());
+                     
+                      devtools.log(prefs.getStringList('groups').toString());
+                      // final prefs =  SharedPreferences.getInstance();
+                     
+                      
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           main_nav,
                           (route) => false,
                       );
-
                     }),
                     style: ElevatedButton.styleFrom(
                       // shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),

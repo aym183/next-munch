@@ -27,7 +27,7 @@ class GroupsView extends StatefulWidget {
 
 class _GroupsViewState extends State<GroupsView> {
 
-  List<String> groups = ['Group1', 'Group2', 'Group3'];
+  // List<String> groups = ['Group1', 'Group2', 'Group3'];
   
   // Future<List?> getGroups() async {
   //   final prefs = await SharedPreferences.getInstance();

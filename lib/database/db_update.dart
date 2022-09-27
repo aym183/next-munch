@@ -13,7 +13,7 @@ void Preferences_UpdateDB(String email, String cuisines, String restaurants, int
 }
 
 
-void add_group_to_userDB(String email, String group_name){
+Future<void> add_group_to_userDB(String email, String group_name) async {
   final users = FirebaseFirestore.instance.collection('users').doc(email);
   users.update({
       "groups":  [group_name],

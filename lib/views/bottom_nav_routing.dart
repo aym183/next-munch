@@ -66,7 +66,21 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
             }
           },
           ),
-          
+
+        actions: [
+          IconButton(
+          icon: Icon(Icons.refresh, color: text_color), 
+          onPressed: () async { 
+            final prefs = await SharedPreferences.getInstance();
+            global_groups = prefs.getStringList('groups')!;
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => bottom_nav_route()),
+              (Route<dynamic> route) => false,
+            );
+           },
+          ),
+          ] 
       ),
       body: _widgetOptions.elementAt(selectedIndex),
       bottomNavigationBar:  BottomNavigationBar(

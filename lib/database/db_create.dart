@@ -6,7 +6,7 @@ void Insert_user_intoDB(String name, String email){
   // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
 
-void Insert_group_intoDB(String group_name, String username, String email){
+Future<void> Insert_group_intoDB(String group_name, String username, String email) async {
   CollectionReference groups = FirebaseFirestore.instance.collection('groups');
   groups.add({
     'group_name': group_name.toString(), 
@@ -15,5 +15,6 @@ void Insert_group_intoDB(String group_name, String username, String email){
     "members": [email]
     
     });
+    
   // users.add({'name': name.toString(),'email': email.toString(), 'login_index': 0});
 }
