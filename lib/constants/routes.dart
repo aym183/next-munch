@@ -3,6 +3,7 @@ const registerRoute = '/register/';
 const homeRoute = '/home/';
 const verifyRoute = '/verifyemail/';
 const groupsRoute = '/groups/';
+const groupsClick = '/groups-clicked/';
 const preferences1 = '/preferences-1/';
 const preferences2 = '/preferences-2/';
 const preferences3 = '/preferences-3/';

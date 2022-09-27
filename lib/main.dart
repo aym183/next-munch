@@ -11,6 +11,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nextmunch/constants/colors.dart';
 import 'package:nextmunch/constants/routes.dart';
 import 'package:nextmunch/views/bottom_nav_routing.dart';
+import 'package:nextmunch/views/group_click_view.dart';
 import 'package:nextmunch/views/group_creation/create_group_1.dart';
 import 'package:nextmunch/views/groups_view.dart';
 import 'package:nextmunch/views/login_view.dart';
@@ -48,6 +49,7 @@ Future<void> main() async{
         creategroup1: (context) => const Group_Details(),
         createmunch1: (context) => const Munch_Details(),
         main_nav: (context) => bottom_nav_route(),
+        groupsClick: (context) => Group_Click(),
       }
     ),
     );
