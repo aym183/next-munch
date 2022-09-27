@@ -74,10 +74,10 @@ class _bottom_nav_routeState extends State<bottom_nav_route> {
             final prefs = await SharedPreferences.getInstance();
             global_groups = prefs.getStringList('groups')!;
             Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => bottom_nav_route()),
-              (Route<dynamic> route) => false,
-            );
+            context,
+            MaterialPageRoute(builder: (context) => bottom_nav_route()),
+            (Route<dynamic> route) => false,
+          );
            },
           ),
           ] 

@@ -47,7 +47,7 @@ Future<void> main() async{
         preferences4: (context) => const Profle_Details(),
         creategroup1: (context) => const Group_Details(),
         createmunch1: (context) => const Munch_Details(),
-        main_nav: (context) => const bottom_nav_route(),
+        main_nav: (context) => bottom_nav_route(),
       }
     ),
     );
