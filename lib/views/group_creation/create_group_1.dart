@@ -133,7 +133,7 @@ class _Group_DetailsState extends State<Group_Details> {
                   ElevatedButton(
                     onPressed: (() async {
                       final group_code = _group_code.text.toString().trim();
-                      invite_code_check(group_code);                      
+                      invite_code_check(group_code);
                     }),
                     style: ElevatedButton.styleFrom(
                       // shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),

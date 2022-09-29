@@ -11,11 +11,12 @@ import 'db_create.dart';
 Future<void> get_groups(String email) async {
   FirebaseFirestore.instance
   .collection('groups')
-  .where('members', isEqualTo: [email]) // change as only factoring in one user
+  .where('members', arrayContains: email) // change as only factoring in one user
   .get()
   .then((querySnapshot) async {
       List<String> listData = querySnapshot.docs.map((doc) => doc.data()['group_name'] as String).toList();
 
+      
       final prefs = await SharedPreferences.getInstance();
       prefs.setStringList('groups', listData);
       global_groups = prefs.getStringList('groups')!;
