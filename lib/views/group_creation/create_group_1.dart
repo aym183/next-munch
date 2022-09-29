@@ -132,7 +132,7 @@ class _Group_DetailsState extends State<Group_Details> {
 
                   ElevatedButton(
                     onPressed: (() async {
-                      final group_code = _group_code.text..toString().trim();
+                      final group_code = _group_code.text.toString().trim();
                       invite_code_check(group_code);                      
                     }),
                     style: ElevatedButton.styleFrom(

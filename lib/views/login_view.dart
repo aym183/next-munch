@@ -79,17 +79,20 @@ class _LoginViewState extends State<LoginView> {
                       final user_credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
                       devtools.log(user_credential.toString());
                       final prefs = await SharedPreferences.getInstance();
+                      prefs.clear();
                       await prefs.setString('email', email);
+                      await get_groups(email);
                       get_username(email);
-                      get_groups(email);
+                      
                       // final prefs =  SharedPreferences.getInstance();
-                      global_groups = prefs.getStringList('groups')!;
+                      
                       // await prefs.setString('username', username);
                       
                       Navigator.of(context).pushNamedAndRemoveUntil(
                         main_nav,
                       (route) => false,
                       );
+                      
                     
                   } on FirebaseAuthException catch(e){
                       if(e.code == "user-not-found"){
